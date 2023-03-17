@@ -58,7 +58,7 @@
 <body>
 	<div class="container">
 		<div class="whatsapp-container">
-			<h5>Whatsapp Non Contact</h5>
+			<h5>Whatsapp Non-Contact</h5>
 			<p>Enter the number you want to WhatsApp without saving it.</p>
 			<div class="input-field">
 				<input id="whatsapp-number" type="text" class="whatsapp-input validate" placeholder="Enter number with country code">
@@ -70,6 +70,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			alert("richin");
 			// Initialize Materialize form input
 			$('.whatsapp-input').focus(function(){
 				$(this).parent().addClass('focused');
@@ -92,10 +93,8 @@
 				}
 			});
 
-			
-		});
-		// Initiate WhatsApp chat on button click
-		$('#whatsapp-btn').click(function(){
+			// Initiate WhatsApp chat on button click
+			$('#whatsapp-btn').click(function(){
 				var whatsappNumber = $('#whatsapp-number').val();
 				console.log(whatsappNumber);
 				var whatsappMessage = 'Hello, this is a non-contact message sent from Whatsapp Non Contact.';
@@ -115,3 +114,4 @@
 					alert('Please enter a valid phone number.');
 				}
 			});
+		});
