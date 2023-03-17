@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Whatsapp Non Contact</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="manifest" href="manifest.json">
+	<style>
+		body {
+			background-color: #F4F4F4;
+			font-family: 'Roboto', sans-serif;
+		}
+		.whatsapp-container {
+			background-color: #FFFFFF;
+			border-radius: 5px;
+			padding: 20px;
+			margin: 20px auto;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+			max-width: 500px;
+			width: 90%;
+			text-align: center;
+		}
+		.whatsapp-container h5 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: bold;
+			color: #075E54;
+		}
+		.whatsapp-container p {
+			margin: 10px 0;
+			color: #757575;
+		}
+		.whatsapp-input {
+			border: none;
+			border-bottom: 2px solid #075E54;
+			border-radius: 0;
+			outline: none;
+			font-size: 18px;
+			margin-bottom: 20px;
+			padding: 10px 0;
+		}
+		.whatsapp-btn {
+			background-color: #075E54;
+			color: #FFFFFF;
+			padding: 10px 20px;
+			border-radius: 20px;
+			border: none;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.whatsapp-btn:hover {
+			background-color: #128C7E;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="whatsapp-container">
+			<h5>Whatsapp Non Contact</h5>
+			<p>Enter the number you want to WhatsApp without saving it.</p>
+			<div class="input-field">
+				<input id="whatsapp-number" type="text" class="whatsapp-input validate" placeholder="Enter number with country code">
+			</div>
+			<button id="whatsapp-btn" class="whatsapp-btn">Start Chat</button>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// Initialize Materialize form input
+			$('.whatsapp-input').focus(function(){
+				$(this).parent().addClass('focused');
+			});
+
+			$('.whatsapp-input').blur(function(){
+				if($(this).val() === ''){
+					$(this).parent().removeClass('focused');
+				}
+			});
+
+			// Initialize Materialize form input
+			$('.whatsapp-input').focus(function(){
+				$(this).parent().addClass('focused');
+			});
+
+			$('.whatsapp-input').blur(function(){
+				if($(this).val() === ''){
+					$(this).parent().removeClass('focused');
+				}
+			});
+
+			// Initiate WhatsApp chat on button click
+			$('#whatsapp-btn').click(function(){
+				var whatsappNumber = $('#whatsapp-number').val();
+				var whatsappMessage = 'Hello, this is a non-contact message sent from Whatsapp Non Contact.';
+
+				if(whatsappNumber !== ''){
+					// Replace all non-digits characters in the phone number
+					whatsappNumber = whatsappNumber.replace(/\D/g,'');
+
+					// Check if the phone number starts with a '+' sign
+					if(whatsappNumber.charAt(0) !== '+'){
+						whatsappNumber = '+' + whatsappNumber;
+					}
+
+					// Open a new window to initiate WhatsApp chat
+					window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappMessage));
+				}else{
+					alert('Please enter a valid phone number.');
+				}
+			});
+		});
